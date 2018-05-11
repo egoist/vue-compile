@@ -22,6 +22,9 @@ Normalize (pre-compile) each block of your SFC:
 sfc normalize example.vue -o output.vue
 # normalize all .vue files inside a directory
 sfc normalize src -d lib
+
+# you can even normalize src/*.js files if needed
+src normalize src -d lib --include "*.js"
 ```
 
 __Then you can publish normalized `.vue` files to npm registry without compiling them to `.js` files.__
