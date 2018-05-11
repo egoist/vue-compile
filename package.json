@@ -32,6 +32,7 @@
     "import-from": "^2.1.0",
     "postcss": "^6.0.22",
     "postcss-load-config": "^1.2.0",
+    "resolve": "^1.7.1",
     "stringify-attributes": "^1.0.0",
     "vue-template-compiler": "^2.5.16"
   },

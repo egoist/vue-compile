@@ -30,7 +30,7 @@ Supported lanaguages:
 
 - `<template>` tag: `html` (default)
 - `<script>` tag: `babel` (default)
-- `<style>` tag: `postcss` (default), `stylus`
+- `<style>` tag: `postcss` (default), `stylus`, `sass`, `scss`
 - Custom blocks: nope.
 
 Gotchas:
