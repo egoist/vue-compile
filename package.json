@@ -1,0 +1,61 @@
+{
+  "name": "sfc",
+  "version": "0.0.0",
+  "description": "A set of useful commands for dealing with Vue single-file components.",
+  "repository": {
+    "url": "egoist/sfc",
+    "type": "git"
+  },
+  "main": "lib/index.js",
+  "bin": "bin/cli.js",
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "npm run lint && echo 'no tests!'",
+    "lint": "xo"
+  },
+  "author": "egoist <0x142857@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "@vue/component-compiler-utils": "^1.2.1",
+    "cac": "^5.0.10",
+    "chalk": "^2.4.1",
+    "debug": "^3.1.0",
+    "fast-glob": "^2.2.1",
+    "find-babel-config": "^1.1.0",
+    "fs-extra": "^6.0.0",
+    "import-from": "^2.1.0",
+    "postcss": "^6.0.22",
+    "postcss-load-config": "^1.2.0",
+    "stringify-attributes": "^1.0.0",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "devDependencies": {
+    "eslint-config-rem": "^4.0.0",
+    "husky": "^1.0.0-rc.4",
+    "lint-staged": "^7.1.0",
+    "stylus": "^0.54.5",
+    "xo": "^0.18.0"
+  },
+  "xo": {
+    "extends": "rem",
+    "rules": {
+      "unicorn/filename-case": "off"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{lib,bin}/**/*.js": [
+      "xo --fix",
+      "git add"
+    ]
+  }
+}
