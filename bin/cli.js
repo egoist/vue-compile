@@ -42,6 +42,10 @@ cli.command('normalize', 'Normalize a Vue single-file component', (input, flags)
   alias: 'd',
   type: 'string'
 })
+.option('include-all', {
+  desc: 'Include files like .js, .ts',
+  type: 'boolean'
+})
 
 cli.option('debug', {
   desc: 'Show debug output'
