@@ -7,6 +7,8 @@ A set of useful commands for dealing with Vue single-file components.
 
 ```bash
 yarn global add sfc
+# or
+npm i -g sfc
 ```
 
 ## Commands
