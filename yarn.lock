@@ -240,6 +240,12 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.46"
 
+"@babel/plugin-syntax-typescript@7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.46.tgz#2a9e0e1f3bb3bd918571c5ee4db97bb2b00e8642"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.46"
+
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.46":
   version "7.0.0-beta.46"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.0.0-beta.46.tgz#130e79b1d4508767c47e5febb809f8dca80c05f5"
@@ -420,6 +426,13 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.46"
 
+"@babel/plugin-transform-typescript@7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.0.0-beta.46.tgz#bcb57558c87de7ae2f4f3a36322934c799bf3774"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.46"
+    "@babel/plugin-syntax-typescript" "7.0.0-beta.46"
+
 "@babel/plugin-transform-unicode-regex@7.0.0-beta.46":
   version "7.0.0-beta.46"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.0.0-beta.46.tgz#10e6edcc8eb0db71ff2f0e3fc87ed88337d24fb9"
@@ -471,6 +484,13 @@
     browserslist "^3.0.0"
     invariant "^2.2.2"
     semver "^5.3.0"
+
+"@babel/preset-typescript@^7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.0.0-beta.46.tgz#ab14898e504c7f172cd0fbc03491f6a5685d8638"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.46"
+    "@babel/plugin-transform-typescript" "7.0.0-beta.46"
 
 "@babel/template@7.0.0-beta.46":
   version "7.0.0-beta.46"

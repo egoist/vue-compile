@@ -29,7 +29,7 @@ __Then you can publish normalized `.vue` files to npm registry without compiling
 Supported lanaguages:
 
 - `<template>` tag: `html` (default)
-- `<script>` tag: `babel` (default)
+- `<script>` tag: `babel` (default), `ts`, `typescript`
 - `<style>` tag: `postcss` (default), `stylus`, `sass`, `scss`
 - Custom blocks: nope.
 
