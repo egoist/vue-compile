@@ -29,16 +29,21 @@ src normalize src -d lib --include "*.js"
 
 __Then you can publish normalized `.vue` files to npm registry without compiling them to `.js` files.__
 
-Supported lanaguages:
+Supported transforms:
 
-- `<template>` tag: `html` (default)
-- `<script>` tag: `babel` (default), `ts`, `typescript`
-- `<style>` tag: `postcss` (default), `stylus`, `sass`, `scss`
+- `<template>` tag:
+  - `html` (default)
+- `<script>` tag: 
+  - `babel` (default): use our default [babel preset](./lib/babel/preset.js) or your own `.babelrc`
+  - `ts` `typescript`: use our default [babel preset](./lib/babel/preset.js) + `@babel/preset-typescript`
+- `<style>` tag: 
+  - `postcss` (default): use your own `postcss.config.js`
+  - `stylus` `sass` `scss`
 - Custom blocks: nope.
 
 Gotchas:
 
-- We don't handle tags that use `src` attribute for now.
+- We don't handle tags that use `src` attribute for now, it will be left as is.
 
 <details><summary>Example</summary><br>
 

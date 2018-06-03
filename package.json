@@ -10,7 +10,8 @@
   "bin": "bin/cli.js",
   "files": [
     "bin/",
-    "lib/"
+    "lib/",
+    "babel.js"
   ],
   "scripts": {
     "test": "npm run lint && echo 'no tests!'",
@@ -20,13 +21,18 @@
   "author": "egoist <0x142857@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/preset-env": "^7.0.0-beta.46",
-    "@babel/preset-typescript": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.49",
+    "@babel/plugin-syntax-jsx": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-typescript": "^7.0.0-beta.49",
     "@vue/component-compiler-utils": "^1.2.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-transform-vue-jsx": "4",
     "cac": "^5.0.10",
     "chalk": "^2.4.1",
     "debug": "^3.1.0",
+    "fast-async": "^6.3.7",
     "fast-glob": "^2.2.1",
     "find-babel-config": "^1.1.0",
     "fs-extra": "^6.0.0",
