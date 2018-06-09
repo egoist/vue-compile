@@ -46,6 +46,14 @@ cli.command('normalize', 'Normalize a Vue single-file component', (input, flags)
   desc: 'A glob pattern to match extra files you wanna normalize, like *.js',
   type: 'string'
 })
+.option('babelrc', {
+  desc: 'Disable .babelrc file',
+  type: 'boolean'
+})
+.option('modern', {
+  desc: 'Only supports browsers that support <script type="module">',
+  type: 'boolean'
+})
 
 cli.option('debug', {
   desc: 'Show debug output'
