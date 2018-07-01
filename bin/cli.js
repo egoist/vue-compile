@@ -48,7 +48,8 @@ cli.command('normalize', 'Normalize a Vue single-file component', (input, flags)
 })
 .option('babelrc', {
   desc: 'Disable .babelrc file',
-  type: 'boolean'
+  type: 'boolean',
+  default: true
 })
 .option('modern', {
   desc: 'Only supports browsers that support <script type="module">',
