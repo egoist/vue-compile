@@ -1,6 +1,6 @@
 {
   "name": "sfc",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "A set of useful commands for dealing with Vue single-file components.",
   "repository": {
     "url": "egoist/sfc",
