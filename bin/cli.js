@@ -16,6 +16,12 @@ cli.command('normalize', 'Normalize a Vue single-file component', (input, flags)
     input: input[0]
   }, flags)
 
+  if (options.debug === true) {
+    process.env.DEBUG = 'sfc:*'
+  } else if (typeof options.debug === 'string') {
+    process.env.DEBUG = `sfc:${options.debug}`
+  }
+
   const sfc = require('../lib')(options)
 
   sfc.on('normalized', (input, output) => {
