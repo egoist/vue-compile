@@ -1,6 +1,6 @@
 {
   "name": "vue-compile",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Pre-compile each blocks of your Vue single-file components.",
   "repository": {
     "url": "egoist/vue-compile",
