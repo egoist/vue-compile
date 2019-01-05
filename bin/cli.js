@@ -11,7 +11,11 @@ const cac = require('cac').default
 
 const cli = cac()
 
-cli.command('normalize', 'Normalize a Vue single-file component', (input, flags) => {
+cli.command('*', 'Normalize a Vue single-file component', (input, flags) => {
+  if (input.length === 0) {
+    return cli.showHelp()
+  }
+
   const options = Object.assign({
     input: input[0]
   }, flags)
