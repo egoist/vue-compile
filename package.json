@@ -1,9 +1,9 @@
 {
-  "name": "sfc",
+  "name": "vue-compile",
   "version": "0.2.13",
-  "description": "A set of useful commands for dealing with Vue single-file components.",
+  "description": "Pre-compile each blocks of your Vue single-file components.",
   "repository": {
-    "url": "egoist/sfc",
+    "url": "egoist/vue-compile",
     "type": "git"
   },
   "main": "lib/index.js",
@@ -16,7 +16,7 @@
   "scripts": {
     "test": "npm run lint && echo 'no tests!'",
     "lint": "xo",
-    "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mLove sfc? You can now donate to support the author:\\u001b[22m\\u001b[39m\\n> \\u001b[36mhttps://patreon.com/egoist\\u001b[39m')\""
+    "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mLove vue-compile? You can now donate to support the author:\\u001b[22m\\u001b[39m\\n> \\u001b[36mhttps://patreon.com/egoist\\u001b[39m')\""
   },
   "author": "egoist <0x142857@gmail.com>",
   "license": "MIT",

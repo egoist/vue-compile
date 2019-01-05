@@ -2,7 +2,7 @@
 const chalk = require('chalk')
 
 if (parseInt(process.versions.node, 10) < 8) {
-  console.error(chalk.red(`The "sfc" module requires Node.js 8 or above!`))
+  console.error(chalk.red(`The "vue-compile" module requires Node.js 8 or above!`))
   console.error(chalk.dim(`Current version: ${process.versions.node}`))
   process.exit(1)
 }
@@ -17,15 +17,15 @@ cli.command('normalize', 'Normalize a Vue single-file component', (input, flags)
   }, flags)
 
   if (options.debug === true) {
-    process.env.DEBUG = 'sfc:*'
+    process.env.DEBUG = 'vue-compile:*'
   } else if (typeof options.debug === 'string') {
-    process.env.DEBUG = `sfc:${options.debug}`
+    process.env.DEBUG = `vue-compile:${options.debug}`
   }
 
-  const sfc = require('../lib')(options)
+  const vueCompile = require('../lib')(options)
 
-  sfc.on('normalized', (input, output) => {
-    if (!sfc.options.debug) {
+  vueCompile.on('normalized', (input, output) => {
+    if (!vueCompile.options.debug) {
       const { humanlizePath } = require('../lib/utils')
 
       console.log(
@@ -36,7 +36,7 @@ cli.command('normalize', 'Normalize a Vue single-file component', (input, flags)
     }
   })
 
-  return sfc.normalize()
+  return vueCompile.normalize()
 })
 .option('out-file', {
   desc: 'Output file',

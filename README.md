@@ -1,30 +1,30 @@
 
-# sfc
+# vue-compile
 
-A set of useful commands for dealing with Vue single-file components.
+Pre-compile each blocks of your Vue single-file components.
 
 ## Install
 
 ```bash
-yarn global add sfc
+yarn global add vue-compile
 # or
-npm i -g sfc
+npm i -g vue-compile
 ```
 
 ## Commands
 
 ### normalize
 
-Normalize (pre-compile) each block of your SFC:
+Normalize (pre-compile) each block of your Vue component:
 
 ```bash
 # normalize a .vue file
-sfc normalize example.vue -o output.vue
+vue-compile example.vue -o output.vue
 # normalize all .vue files inside a directory
-sfc normalize src -d lib
+vue-compile src -d lib
 
 # you can even normalize src/*.js files if needed
-src normalize src -d lib --include "*.js"
+vue-compile src -d lib --include "*.js"
 ```
 
 __Then you can publish normalized `.vue` files to npm registry without compiling them to `.js` files.__
@@ -112,7 +112,7 @@ export default {
 
 ## Author
 
-**sfc** © [egoist](https://github.com/egoist), Released under the [MIT](./LICENSE) License.<br>
-Authored and maintained by egoist with help from contributors ([list](https://github.com/egoist/sfc/contributors)).
+**vue-compile** © [egoist](https://github.com/egoist), Released under the [MIT](./LICENSE) License.<br>
+Authored and maintained by egoist with help from contributors ([list](https://github.com/egoist/vue-compile/contributors)).
 
 > [github.com/egoist](https://github.com/egoist) · GitHub [@egoist](https://github.com/egoist) · Twitter [@_egoistlily](https://twitter.com/_egoistlily)
