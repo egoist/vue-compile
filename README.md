@@ -11,20 +11,14 @@ yarn global add vue-compile
 npm i -g vue-compile
 ```
 
-## Commands
-
-### normalize
-
-Normalize (pre-compile) each block of your Vue component:
+## Usage
 
 ```bash
 # normalize a .vue file
 vue-compile example.vue -o output.vue
-# normalize all .vue files inside a directory
-vue-compile src -d lib
-
-# you can even normalize src/*.js files if needed
-vue-compile src -d lib --include "*.js"
+# normalize a directory
+# non .vue files will be simply copied to output directory
+vue-compile src -o lib
 ```
 
 __Then you can publish normalized `.vue` files to npm registry without compiling them to `.js` files.__
@@ -100,6 +94,10 @@ export default {
 </style>
 ```
 </details>
+
+## Roadmap
+
+- [ ] Compile standalone CSS / Sass / Stylus files to CSS files, replace the extension in imports like `import style from './style.sass'` with `.css`
 
 ## Contributing
 
