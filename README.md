@@ -1,7 +1,7 @@
 
 # vue-compile
 
-Pre-compile each blocks of your Vue single-file components.
+Compile the blocks in Vue single-file components to use JS/CSS instead of Babel/Sass/Stylus.
 
 ## Install
 
