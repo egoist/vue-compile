@@ -3,6 +3,13 @@
 
 Compile the blocks in Vue single-file components to use JS/CSS instead of Babel/Sass/Stylus.
 
+## Why This Approach
+
+We want to publish `.vue` files instead of transformed `.js` files on npm because the `.vue` file is preferred in some scenarioes, e.g. `vue-server-renderer` can inline critical CSS from `<style>` blocks.
+
+And we use this library to compile the blocks in `.vue` files to use standard languages so that you can use languages like Sass and your users don't have to install `node-sass` and `sass-loader` just for using your components.
+
+
 ## Install
 
 ```bash
