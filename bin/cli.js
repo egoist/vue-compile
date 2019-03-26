@@ -59,8 +59,12 @@ cli
   })
   .option('-o, --output <file|directory>', 'Output path')
   .option(
+    '-i, --include <glob>',
+    'A glob pattern to include from input directory'
+  )
+  .option(
     '-e, --exclude <glob>',
-    'A glob pattern to match files to exclude from input directory'
+    'A glob pattern to exclude from input directory'
   )
   .option('--no-babelrc', 'Disable .babelrc file')
   .option(
