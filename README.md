@@ -23,7 +23,7 @@ vue-compile src -o lib
 
 __Then you can publish normalized `.vue` files to npm registry without compiling them to `.js` files.__
 
-Supported transforms:
+Supported transforms (via `lang` attribute):
 
 - `<template>` tag:
   - `html` (default)
@@ -37,7 +37,7 @@ Supported transforms:
 
 Gotchas:
 
-- We don't handle tags that use `src` attribute for now, it will be left as is.
+- We only handle `src` attribute for `<style>` blocks, we simply replace the extension with `.css` and remove the `lang` attribute.
 
 <details><summary>Example</summary><br>
 
@@ -59,6 +59,8 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" src="./foo.scss">
 
 <style lang="stylus" scoped>
 @import './colors.styl'
@@ -87,6 +89,8 @@ export default {
 };
 </script>
 
+<style src="./foo.css">
+
 <style scoped>
 .foo {
   color: #f00;
@@ -95,9 +99,11 @@ export default {
 ```
 </details>
 
-## Roadmap
+### Compile Standalone CSS Files
 
-- [ ] Compile standalone CSS / Sass / Stylus files to CSS files, replace the extension in imports like `import style from './style.sass'` with `.css`
+CSS files like `.css` `.scss` `.sass` `.styl` will be compiled to output directory with `.css` extension, all relevant `import` statements in `.js` `.ts` or `<script>` blocks will be changed to use `.css` extension as well.
+
+You can exclude them using the `--exclude "**/*.{css,scss,sass,styl}"` flag.
 
 ## Contributing
 
