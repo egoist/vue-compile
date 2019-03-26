@@ -782,11 +782,6 @@ abab@^1.0.4:
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
   integrity sha1-X6rZwsB/YN12dw9xzwJbYqY8/U4=
 
-acorn-es7-plugin@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.npmjs.org/acorn-es7-plugin/-/acorn-es7-plugin-1.1.7.tgz#f2ee1f3228a90eead1245f9ab1922eb2e71d336b"
-  integrity sha1-8u4fMiipDurRJF+asZIusucdM2s=
-
 acorn-globals@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-4.1.0.tgz#ab716025dbe17c54d3ef81d32ece2b2d99fe2538"
@@ -800,11 +795,6 @@ acorn-jsx@^3.0.0:
   integrity sha1-r9+UiPsezvyDSPb7IvRk4ypYs2s=
   dependencies:
     acorn "^3.0.4"
-
-acorn@>=2.5.2:
-  version "5.6.1"
-  resolved "https://registry.npmjs.org/acorn/-/acorn-5.6.1.tgz#c9e50c3e3717cf897f1b071ceadbb543bbc0a8d4"
-  integrity sha512-XH4o5BK5jmw9PzSGK7mNf+/xV+mPxQxGZoeC36OVsJZYV77JAG9NnI7T90hoUpI/C1TOfXWTvugRdZ9ZR3iE2Q==
 
 acorn@^3.0.4:
   version "3.3.0"
@@ -2182,14 +2172,6 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
-
-fast-async@^6.3.7:
-  version "6.3.7"
-  resolved "https://registry.npmjs.org/fast-async/-/fast-async-6.3.7.tgz#b4a406f2c59890b8b1b4c8468a36bd7f1a57e47f"
-  integrity sha512-sF8kZ9Qv1dkg2zcYaYhMY0tS/Qbr1mqciIr2QEaiWI1RrF2udOZ7baXl/FOLoiMx5U3iFLuwNpW0QNQvox3Rmw==
-  dependencies:
-    nodent-compiler "^3.2.4"
-    nodent-runtime ">=3.2.1"
 
 fast-deep-equal@^1.0.0:
   version "1.1.0"
@@ -3918,26 +3900,6 @@ node-releases@^1.1.11:
   dependencies:
     semver "^5.3.0"
 
-nodent-compiler@^3.2.4:
-  version "3.2.6"
-  resolved "https://registry.npmjs.org/nodent-compiler/-/nodent-compiler-3.2.6.tgz#ce53314bce7b18f136601068886b0379b8d372a8"
-  integrity sha512-6Zu15pXyMZgWUCp1xZMb+iUexFAUnixeAn3x4U+mqLAnOskWq8/fiBG03vn/pbHl9ZS61LTWSbYtHRzNkZS8ow==
-  dependencies:
-    acorn ">=2.5.2"
-    acorn-es7-plugin "^1.1.7"
-    nodent-transform "^3.2.6"
-    source-map "^0.5.7"
-
-nodent-runtime@>=3.2.1:
-  version "3.2.1"
-  resolved "https://registry.npmjs.org/nodent-runtime/-/nodent-runtime-3.2.1.tgz#9e2755d85e39f764288f0d4752ebcfe3e541e00e"
-  integrity sha512-7Ws63oC+215smeKJQCxzrK21VFVlCFBkwl0MOObt0HOpVQXs3u483sAmtkF33nNqZ5rSOQjB76fgyPBmAUrtCA==
-
-nodent-transform@^3.2.6:
-  version "3.2.6"
-  resolved "https://registry.npmjs.org/nodent-transform/-/nodent-transform-3.2.6.tgz#b782edc0e2aafa6d29df0333b36cd00af757c36d"
-  integrity sha512-CMa5JFCWhfv6SbG7GPNwxww9dyZuxHdC1vzGELodIPIklecH5FJzvB/gS5jb62jAnNqeQWPEoPY7AJcxvzmz2A==
-
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
@@ -4971,7 +4933,7 @@ source-map@0.1.x:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7:
+source-map@^0.5.0, source-map@^0.5.6:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
