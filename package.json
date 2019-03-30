@@ -63,5 +63,8 @@
       "xo --fix",
       "git add"
     ]
+  },
+  "release": {
+    "branch": "master"
   }
 }
