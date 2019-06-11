@@ -1,7 +1,7 @@
 
 # vue-compile
 
-Compile the blocks in Vue single-file components to use JS/CSS instead of Babel/Sass/Stylus.
+Compile the blocks in Vue single-file components to JS/CSS from Babel/Sass/Stylus.
 
 ## Why This Approach
 
