@@ -40,7 +40,7 @@ Supported transforms (via `lang` attribute):
 - `<style>` tag: 
   - `postcss` (default): use your own `postcss.config.js`
   - `stylus` `sass` `scss`
-- Custom blocks: nope.
+- Custom blocks: They are not touched.
 
 Gotchas:
 
