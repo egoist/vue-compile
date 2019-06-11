@@ -1,9 +1,9 @@
-const path = require('path')
-const fs = require('fs-extra')
-const stringifyAttrs = require('stringify-attributes')
-const { cssExtensionsRe } = require('./utils')
+import path from 'path';
+import fs from 'fs-extra';
+import stringifyAttrs from 'stringify-attributes';
+import { cssExtensionsRe } from './utils';
 
-module.exports = async ({ script, styles, template }, outFile) => {
+export default async ({ script, styles, template }, outFile) => {
   const parts = []
 
   if (template) {

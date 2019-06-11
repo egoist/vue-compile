@@ -1,12 +1,17 @@
-const path = require('path')
-const { EventEmitter } = require('events')
-const fs = require('fs-extra')
-const JoyCon = require('joycon')
-const isBinaryPath = require('is-binary-path')
-const debug = require('debug')('vue-compile:cli')
-const { replaceContants, cssExtensionsRe } = require('./utils')
+import path from 'path';
+import { EventEmitter } from 'events';
+import fs from 'fs-extra';
+import JoyCon from 'joycon';
+import isBinaryPath from 'is-binary-path';
+import debug from 'debug';
+const cliDebug = debug('vue-compile:cli');
+import { replaceContants, cssExtensionsRe } from './utils';
 
 class VueCompile extends EventEmitter {
+	public options: any;
+	public isInputFile: boolean = false;
+	public emit: any;
+
   constructor(options) {
     super()
 
@@ -22,7 +27,7 @@ class VueCompile extends EventEmitter {
       const { data: config, path: configPath } = joycon.loadSync()
 
       if (configPath) {
-        debug(`Using config file: ${configPath}`)
+        cliDebug(`Using config file: ${configPath}`)
       }
       options = Object.assign({}, options, config)
     }
@@ -106,7 +111,7 @@ class VueCompile extends EventEmitter {
     this.emit('normalized', input, outFile)
   }
 
-  async normalizeDir(input, outDir) {
+  async normalizeDir(input: string, outDir: string) {
     const include = [].concat(this.options.include || [])
     const files = await require('fast-glob')(
       include.length > 0 ? include : ['**/*'],
@@ -116,7 +121,7 @@ class VueCompile extends EventEmitter {
       }
     )
     await Promise.all(
-      files.map(file => {
+      files.map((file: string) => {
         return this.normalizeFile(
           path.join(input, file),
           path.join(outDir, file)
@@ -178,5 +183,4 @@ class VueCompile extends EventEmitter {
     this.emit('normalized', filename, outFile)
   }
 }
-
-module.exports = opts => new VueCompile(opts)
+export default opts => new VueCompile(opts)

@@ -1,15 +1,21 @@
-const path = require('path')
-const debug = require('debug')('vue-compile:script')
+import path from 'path';
+import debug from 'debug';
+const cliDebug = debug('vue-compile:cli');
+import findBabelConfig from 'find-babel-config';
 
 const cache = new Map()
-
-module.exports = async (code, { filename, modern, babelrc }) => {
+interface Interface {
+  filename: string,
+  modern: string,
+  babelrc: boolean
+}
+export default async (code: string, { filename, modern, babelrc }: Interface) => {
   const cwd = path.dirname(filename)
   const file =
-    babelrc === false ?
+    !babelrc ?
       null :
       cache.get(cwd) ||
-        (await require('find-babel-config')(cwd).then(res => res.file))
+        (await findBabelConfig(cwd).then(res => res.file))
 
   cache.set(cwd, file)
 
@@ -26,7 +32,7 @@ module.exports = async (code, { filename, modern, babelrc }) => {
   }
   if (file) {
     config.babelrc = true
-    debug(`Using Babel config file at ${file}`)
+    cliDebug(`Using Babel config file at ${file}`)
   } else {
     config.babelrc = false
   }

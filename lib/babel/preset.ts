@@ -1,6 +1,6 @@
-const { cssExtensionsRe } = require('../utils')
+import { cssExtensionsRe } from '../utils';
 
-module.exports = (_, { modern } = {}) => {
+export default (_, { modern } = {}) => {
   return {
     presets: [
       [
@@ -11,11 +11,11 @@ module.exports = (_, { modern } = {}) => {
         }
       ]
     ],
-    plugins: [replaceExtensionInImports]
+    plugins: [_replaceExtensionInImports]
   }
 }
 
-function replaceExtensionInImports({ types: t }) {
+function _replaceExtensionInImports({ types: t }) {
   return {
     name: 'replace-extension-in-imports',
     visitor: {

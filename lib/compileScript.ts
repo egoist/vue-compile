@@ -1,6 +1,8 @@
-const { notSupportedLang } = require('./utils')
+import { notSupportedLang } from './utils';
+import SFCDescriptor from '@vue/component-compiler-utils';
+import { TCtx } from './types';
 
-module.exports = async (script, ctx) => {
+export default async (script: SFCDescriptor.SFCBlock, ctx: TCtx) => {
   if (!script) return script
 
   const code = script.content.replace(/^\/\/$/mg, '')

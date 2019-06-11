@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-const chalk = require('chalk')
+import chalk from 'chalk';
+import cac from 'cac';
+import pkg from '../package.json';
+import VueCompile from '../lib';
 
 if (parseInt(process.versions.node, 10) < 8) {
   console.error(
@@ -8,10 +11,6 @@ if (parseInt(process.versions.node, 10) < 8) {
   console.error(chalk.dim(`Current version: ${process.versions.node}`))
   process.exit(1)
 }
-
-const cac = require('cac')
-const pkg = require('../package.json')
-
 const cli = cac('vue-compile')
 
 cli
@@ -37,13 +36,12 @@ cli
       process.env.DEBUG = `vue-compile:${options.debug}`
     }
 
-    const vueCompile = require('../lib')(options)
-
+    const vueCompile = VueCompile(options);
     if (!vueCompile.options.input) {
       return cli.outputHelp()
     }
 
-    vueCompile.on('normalized', (input, output) => {
+    vueCompile.on('normalized', (input: string, output: string) => {
       if (!vueCompile.options.debug) {
         const { humanlizePath } = require('../lib/utils')
 
@@ -79,7 +77,7 @@ cli.help()
 
 cli.parse()
 
-function handleError(error) {
+function handleError(error: Error) {
   console.error(error.stack)
   process.exit(1)
 }
