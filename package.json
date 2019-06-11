@@ -14,7 +14,7 @@
     "babel.js"
   ],
   "scripts": {
-    "test": "npm run lint && echo 'no tests!'",
+    "test": "npm run lint && jest",
     "lint": "xo",
     "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mLove vue-compile? You can now donate to support the author:\\u001b[22m\\u001b[39m\\n> \\u001b[36mhttps://patreon.com/egoist\\u001b[39m')\""
   },
@@ -43,12 +43,14 @@
   "devDependencies": {
     "eslint-config-rem": "^4.0.0",
     "husky": "^1.0.0-rc.4",
+    "jest": "^24.8.0",
     "lint-staged": "^7.1.0",
     "stylus": "^0.54.5",
     "xo": "^0.18.0"
   },
   "xo": {
     "extends": "rem",
+    "envs": ["jest"],
     "rules": {
       "unicorn/filename-case": "off"
     }
