@@ -23,7 +23,6 @@ import { SFCBlock } from '@vue/component-compiler-utils';
 class VueCompile extends EventEmitter {
   public options: TVueCompileOption;
 	public isInputFile: boolean = false;
-	public emit: any;
 
   constructor(options: TVueCompileOption) {
     super()

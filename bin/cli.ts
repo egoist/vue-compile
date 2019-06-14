@@ -2,8 +2,8 @@
 import chalk from 'chalk';
 import cac from 'cac';
 import pkg from '../package.json';
-import VueCompile from '../lib';
 import { humanlizePath } from '../lib/utils';
+const importLazy = require('import-lazy')(require);
 
 if (parseInt(process.versions.node, 10) < 8) {
   console.error(
@@ -12,6 +12,8 @@ if (parseInt(process.versions.node, 10) < 8) {
   console.error(chalk.dim(`Current version: ${process.versions.node}`))
   process.exit(1)
 }
+const VueCompile = importLazy('../lib');
+
 const cli = cac('vue-compile')
 
 cli
