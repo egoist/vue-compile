@@ -1,6 +1,6 @@
-import path from 'path';
-import { promisify } from 'util';
-import importLocal from '../importLocal';
+import path from 'path'
+import { promisify } from 'util'
+import importLocal from '../importLocal'
 
 const moduleRe = /^~([a-z0-9]|@).+/i
 
@@ -8,12 +8,15 @@ const getUrlOfPartial = (url: string) => {
   const parsedUrl = path.parse(url)
   return `${parsedUrl.dir}${path.sep}_${parsedUrl.base}`
 }
-
-export default async (code: string, { filename, indentedSyntax }: {filename :string, indentedSyntax: string}) => {
+interface ISass {
+  filename: string
+  indentedSyntax: boolean
+}
+export default async (code: string, { filename, indentedSyntax }: ISass) => {
   const localParameter = {
     dir: path.dirname(filename),
     name: 'sass',
-    fallback: 'node-sass',
+    fallback: 'node-sass'
   }
   const sass = importLocal(localParameter)
   const res = await promisify(sass.render.bind(sass))({

@@ -1,9 +1,12 @@
-import path from 'path';
-import fs from 'fs-extra';
-import stringifyAttrs from 'stringify-attributes';
-import { cssExtensionsRe } from './utils';
+import path from 'path'
+import fs from 'fs-extra'
+import stringifyAttrs from 'stringify-attributes'
+import { cssExtensionsRe } from './utils'
+import { SFCDescriptor } from '@vue/component-compiler-utils';
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
+type T = Omit<SFCDescriptor, 'customBlocks'>;
 
-export default async ({ script, styles, template }, outFile) => {
+export default async ({ script, styles, template }: T, outFile: string) => {
   const parts = []
 
   if (template) {

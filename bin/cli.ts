@@ -3,6 +3,7 @@ import chalk from 'chalk';
 import cac from 'cac';
 import pkg from '../package.json';
 import VueCompile from '../lib';
+import { humanlizePath } from '../lib/utils';
 
 if (parseInt(process.versions.node, 10) < 8) {
   console.error(
@@ -43,8 +44,6 @@ cli
 
     vueCompile.on('normalized', (input: string, output: string) => {
       if (!vueCompile.options.debug) {
-        const { humanlizePath } = require('../lib/utils')
-
         console.log(
           `${chalk.magenta(humanlizePath(input))} ${chalk.dim(
             '->'

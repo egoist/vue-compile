@@ -1,0 +1,23 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"]
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": false
+    },
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ]
+}

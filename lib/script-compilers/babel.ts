@@ -1,25 +1,25 @@
-import path from 'path';
-import debug from 'debug';
-const cliDebug = debug('vue-compile:cli');
-import findBabelConfig from 'find-babel-config';
+import path from 'path'
+import debug from 'debug'
+const cliDebug = debug('vue-compile:cli')
+import findBabelConfig from 'find-babel-config'
+import { TCtx } from '../types'
 
-const cache = new Map()
-interface Interface {
-  filename: string,
-  modern: string,
-  babelrc: boolean
+interface IConfig {
+  filename: string
+  presets: any[]
+  babelrc?: boolean
 }
-export default async (code: string, { filename, modern, babelrc }: Interface) => {
+export default async (code: string, { filename, modern, babelrc }: TCtx) => {
+  const cache = new Map()
   const cwd = path.dirname(filename)
-  const file =
-    !babelrc ?
-      null :
-      cache.get(cwd) ||
-        (await findBabelConfig(cwd).then(res => res.file))
+  const file = !babelrc
+    ? null
+    : cache.get(cwd) ||
+      (await findBabelConfig(cwd).then((res) => res.file))
 
   cache.set(cwd, file)
 
-  const config = {
+  const config: IConfig = {
     filename,
     presets: [
       [

@@ -1,12 +1,18 @@
 // TODO: use `typescript` module to compile typescript code 😅
 // So that we have proper type checking at compile time
-module.exports = (code, { filename }) => {
-  return require('@babel/core').transform(code, {
+import { transform } from '@babel/core';
+
+export default (code: string, { filename }: { filename: string }) => {
+  const transformed = transform(code, {
     filename,
     babelrc: false,
     presets: [
       require.resolve('@babel/preset-typescript'),
       require.resolve('../babel/preset')
     ]
-  }).code
+  })
+  if (transformed) {
+    return transformed.code as string;
+  }
+  return '';
 }

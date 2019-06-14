@@ -1,6 +1,7 @@
 import path from 'path';
 import debug from 'debug';
 import postcss from 'postcss';
+import postCssLoadConfig from 'postcss-load-config';
 
 const cliDebug = debug('vue-compile:cli');
 const cache = new Map()
@@ -18,7 +19,7 @@ export default async (code: string, { filename } : { filename: string} ) => {
   const cwd = path.dirname(filename)
   const config =
     cache.get(cwd) ||
-    (await require('postcss-load-config')(ctx, cwd, {
+    (await postCssLoadConfig(ctx, cwd, {
       argv: false
     }).catch((err: Error) => {
       if (err.message.includes('No PostCSS Config found in')) {

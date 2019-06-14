@@ -23,6 +23,8 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
     "@vue/component-compiler-utils": "^2.3.0",
     "babel-preset-minimal": "^0.1.2",
     "cac": "^6.4.2",
@@ -42,18 +44,16 @@
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
+    "@types/babel__core": "^7.1.2",
     "@types/debug": "^4.1.4",
     "@types/fs-extra": "^7.0.0",
-    "@types/is-binary-path": "^2.1.0",
     "@types/node": "^12.0.7",
+    "@types/postcss-load-config": "^2.0.0",
     "@types/stringify-attributes": "^1.0.0",
     "eslint-config-rem": "^4.0.0",
     "husky": "^1.0.0-rc.4",
     "lint-staged": "^7.1.0",
     "stylus": "^0.54.5",
-    "tslint": "^5.17.0",
-    "tslint-config-airbnb": "^5.11.1",
-    "tslint-react": "^4.0.0",
     "xo": "^0.18.0"
   },
   "xo": {

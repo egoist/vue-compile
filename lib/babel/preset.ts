@@ -1,6 +1,6 @@
 import { cssExtensionsRe } from '../utils';
 
-export default (_, { modern } = {}) => {
+export default (_: any, { modern }: { modern: string}) => {
   return {
     presets: [
       [
@@ -15,11 +15,13 @@ export default (_, { modern } = {}) => {
   }
 }
 
-function _replaceExtensionInImports({ types: t }) {
+function _replaceExtensionInImports({ types: t }: { types: {
+    stringLiteral: (value: string) => string;
+  }}) {
   return {
     name: 'replace-extension-in-imports',
     visitor: {
-      ImportDeclaration(path) {
+      ImportDeclaration(path: any) {
         if (cssExtensionsRe.test(path.node.source.value)) {
           path.node.source.value = path.node.source.value.replace(
             cssExtensionsRe,
@@ -27,7 +29,7 @@ function _replaceExtensionInImports({ types: t }) {
           )
         }
       },
-      CallExpression(path) {
+      CallExpression(path: any) {
         if (path.node.callee.name === 'require') {
           const arg = path.get('arguments.0')
           if (arg) {
