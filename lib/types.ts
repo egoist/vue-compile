@@ -17,18 +17,8 @@ type TVueCompileOption = {
   exclude?: string;
   debug?: boolean;
 }
-type TStyle = {
-  content: string
-  lang?: string
-  attrs: {
-    lang: string
-    src: string
-  }
-  src: string
-}[]
 
 export {
   TCtx,
-  TStyle,
   TVueCompileOption
 }
