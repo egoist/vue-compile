@@ -92,7 +92,7 @@
     }
   },
   "lint-staged": {
-    "{lib,bin}/**/*.js": [
+    "{src}/**/*.ts": [
       "xo --fix",
       "git add"
     ]
