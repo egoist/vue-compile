@@ -1,6 +1,10 @@
-const { notSupportedLang } = require('./utils')
+import { SFCBlock } from '@vue/component-compiler-utils'
+import { notSupportedLang } from './utils'
 
-module.exports = (styles, { filename }) => {
+export const compileStyles = async (
+  styles: SFCBlock[],
+  { filename }: { filename: string }
+): Promise<SFCBlock[]> => {
   return Promise.all(
     styles.map(async style => {
       // Do not handle "src" import
@@ -10,15 +14,13 @@ module.exports = (styles, { filename }) => {
       const { content } = style
 
       if (style.lang === 'stylus') {
-        style.content = await require('./style-compilers/stylus')(
-          content,
-          { filename }
-        )
+        style.content = await require('./style-compilers/stylus')(content, {
+          filename
+        })
       } else if (!style.lang || style.lang === 'postcss') {
-        style.content = await require('./style-compilers/postcss')(
-          content,
-          { filename }
-        )
+        style.content = await require('./style-compilers/postcss')(content, {
+          filename
+        })
       } else if (style.lang === 'scss' || style.lang === 'sass') {
         style.content = await require('./style-compilers/sass')(content, {
           filename,

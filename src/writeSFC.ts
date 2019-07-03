@@ -1,12 +1,13 @@
-const path = require('path')
-const fs = require('fs-extra')
-const stringifyAttrs = require('stringify-attributes')
-const { cssExtensionsRe } = require('./utils')
+import path from 'path'
+import fs from 'fs-extra'
+import stringifyAttrs from 'stringify-attributes'
+import { SFCDescriptor } from '@vue/component-compiler-utils'
+import { cssExtensionsRe } from './utils'
 
-module.exports = async (
-  { script, styles, template, customBlocks },
-  outFile
-) => {
+export const writeSFC = async (
+  { script, styles, template, customBlocks }: SFCDescriptor,
+  outFile: string
+): Promise<void> => {
   const parts = []
 
   if (template) {
@@ -23,11 +24,11 @@ module.exports = async (
 
   if (styles.length > 0) {
     for (const style of styles) {
-      const attrs = Object.assign({}, style.attrs)
+      const attrs = { ...style.attrs}
       delete attrs.lang
 
       if (style.src) {
-        attrs.src = attrs.src.replace(cssExtensionsRe, '.css')
+        attrs.src = style.src.replace(cssExtensionsRe, '.css')
         parts.push(`<style${stringifyAttrs(attrs)}></style>`)
       } else {
         parts.push(

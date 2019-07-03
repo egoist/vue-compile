@@ -1,9 +1,14 @@
-const path = require('path')
-const debug = require('debug')('vue-compile:style')
+import path from 'path'
+import createDebug from 'debug'
+
+const debug = createDebug('vue-compile:style')
 
 const cache = new Map()
 
-module.exports = async (code, { filename }) => {
+export const compile = async (
+  code: string,
+  { filename }: { filename: string }
+): Promise<string> => {
   const ctx = {
     file: {
       extname: path.extname(filename),
@@ -18,7 +23,7 @@ module.exports = async (code, { filename }) => {
     cache.get(cwd) ||
     (await require('postcss-load-config')(ctx, cwd, {
       argv: false
-    }).catch(error => {
+    }).catch((error: Error) => {
       if (error.message.includes('No PostCSS Config found in')) {
         return {}
       }
@@ -31,15 +36,16 @@ module.exports = async (code, { filename }) => {
     debug(`Using PostCSS config file at ${config.file}`)
   }
 
-  const options = Object.assign(
-    {
-      from: filename,
-      map: false
-    },
-    config.options
-  )
+  const options = {
+    from: filename,
+      map: false,
+    ...config.options
+  }
 
-  return require('postcss')(config.plugins || [])
-    .process(code, options)
-    .then(res => res.css)
+  return import('postcss').then(async postcss => {
+    return postcss
+      .default(config.plugins || [])
+      .process(code, options)
+      .then(res => res.css)
+  })
 }

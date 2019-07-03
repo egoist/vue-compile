@@ -1,13 +1,13 @@
-const path = require('path')
-const fs = require('fs-extra')
-const compile = require('../lib')
+import path from 'path'
+import fs from 'fs-extra'
+import { createCompiler } from '../src'
 
-const fixture = (...args) => path.resolve(__dirname, 'fixture', ...args)
-const tmp = name => fixture('output', name)
+const fixture = (...args: string[]): string => path.resolve(__dirname, 'fixture', ...args)
+const tmp = (name: string): string => fixture('output', name)
 
 test('custom blocks', async () => {
   const outDir = tmp('custom-blocks')
-  const compiler = compile({
+  const compiler = createCompiler({
     input: fixture('custom-blocks'),
     output: outDir
   })

@@ -1,16 +1,16 @@
-const path = require('path')
+import path from 'path'
 
-exports.humanlizePath = p => path.relative(process.cwd(), p)
+export const humanlizePath = (p: string): string => path.relative(process.cwd(), p)
 
-exports.notSupportedLang = (lang, tag) => {
+export const notSupportedLang = (lang: string, tag: string): string => {
   return `"${lang}" is not supported for <${tag}> tag currently, wanna contribute this feature?`
 }
 
-function escapeRe(str) {
+function escapeRe(str: string): string {
   return str.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&')
 }
 
-exports.replaceContants = (content, constants) => {
+export const replaceContants = (content: string, constants?: {[k:string]:any}): string => {
   if (!constants) return content
 
   const RE = new RegExp(
@@ -26,4 +26,4 @@ exports.replaceContants = (content, constants) => {
   return content
 }
 
-exports.cssExtensionsRe = /\.(css|s[ac]ss|styl(us)?)$/
+export const cssExtensionsRe = /\.(css|s[ac]ss|styl(us)?)$/
