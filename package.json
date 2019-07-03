@@ -1,6 +1,6 @@
 {
   "name": "vue-compile",
-  "version": "0.5.2",
+  "version": "0.6.1-canary.17.6ca7886",
   "description": "Pre-compile each blocks of your Vue single-file components.",
   "repository": {
     "url": "egoist/vue-compile",
@@ -27,7 +27,7 @@
     "@babel/preset-typescript": "^7.0.0",
     "@vue/component-compiler-utils": "^2.3.0",
     "babel-preset-minimal": "^0.1.2",
-    "cac": "^6.4.2",
+    "cac": "^6.5.2",
     "chalk": "^2.4.1",
     "debug": "^3.1.0",
     "fast-glob": "^3.0.3",
