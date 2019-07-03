@@ -3,7 +3,7 @@ const chalk = require('chalk')
 
 if (parseInt(process.versions.node, 10) < 8) {
   console.error(
-    chalk.red(`The "vue-compile" module requires Node.js 8 or above!`)
+    chalk.red('The "vue-compile" module requires Node.js 8 or above!')
   )
   console.error(chalk.dim(`Current version: ${process.versions.node}`))
   process.exit(1)
@@ -18,7 +18,7 @@ cli
   .command('[input]', 'Normalize input file or directory', {
     ignoreOptionDefaultValue: true
   })
-  .usage(`[input] [options]`)
+  .usage('[input] [options]')
   .action((input, flags) => {
     const options = Object.assign(
       {
