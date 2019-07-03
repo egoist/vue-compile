@@ -1,21 +1,23 @@
 {
   "name": "vue-compile",
-  "version": "0.5.2",
+  "version": "0.6.1-canary.17.6ca7886",
   "description": "Pre-compile each blocks of your Vue single-file components.",
   "repository": {
     "url": "egoist/vue-compile",
     "type": "git"
   },
-  "main": "lib/index.js",
-  "bin": "bin/cli.js",
+  "main": "dist/index.js",
+  "bin": "dist/cli.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "bin/",
-    "lib/",
+    "dist/",
     "babel.js"
   ],
   "scripts": {
     "test": "npm run lint && jest",
     "lint": "xo",
+    "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build",
     "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mLove vue-compile? You can now donate to support the author:\\u001b[22m\\u001b[39m\\n> \\u001b[36mhttps://patreon.com/egoist\\u001b[39m')\""
   },
   "author": "egoist <0x142857@gmail.com>",
@@ -25,7 +27,7 @@
     "@babel/preset-typescript": "^7.0.0",
     "@vue/component-compiler-utils": "^2.3.0",
     "babel-preset-minimal": "^0.1.2",
-    "cac": "^6.4.2",
+    "cac": "^6.5.2",
     "chalk": "^2.4.1",
     "debug": "^3.1.0",
     "fast-glob": "^3.0.3",
@@ -37,19 +39,46 @@
     "postcss": "^7.0.6",
     "postcss-load-config": "^2.0.0",
     "resolve": "^1.8.1",
+    "resolve-from": "^5.0.0",
     "stringify-attributes": "^1.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.4",
+    "@types/fs-extra": "^8.0.0",
+    "@types/is-binary-path": "^2.1.0",
+    "@types/jest": "^24.0.15",
+    "@types/node-sass": "^4.11.0",
+    "@types/stringify-attributes": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint-config-prettier": "^6.0.0",
     "eslint-config-rem": "^4.0.0",
+    "eslint-config-xo-typescript": "^0.15.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
     "lint-staged": "^9.0.2",
+    "prettier": "^1.18.2",
     "stylus": "^0.54.5",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2",
+    "vue": "^2.6.10",
     "xo": "^0.24.0"
   },
   "xo": {
-    "extends": "rem",
+    "extends": [
+      "xo-typescript",
+      "rem",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "extensions": [
+      "ts"
+    ],
     "envs": [
       "jest"
     ],
@@ -63,7 +92,7 @@
     }
   },
   "lint-staged": {
-    "{lib,bin}/**/*.js": [
+    "{src}/**/*.ts": [
       "xo --fix",
       "git add"
     ]

@@ -1,6 +1,8 @@
-const { cssExtensionsRe } = require('../utils')
+import { PluginObj, types as Types } from '@babel/core'
+import { cssExtensionsRe } from '../utils'
 
-module.exports = (_, { modern } = {}) => {
+export default (_: any, opts: any = {}) => {
+  const { modern } = opts
   return {
     presets: [
       [
@@ -15,7 +17,8 @@ module.exports = (_, { modern } = {}) => {
   }
 }
 
-function replaceExtensionInImports({ types: t }) {
+function replaceExtensionInImports(opts: { types: typeof Types }): PluginObj {
+  const { types: t } = opts
   return {
     name: 'replace-extension-in-imports',
     visitor: {
@@ -28,8 +31,8 @@ function replaceExtensionInImports({ types: t }) {
         }
       },
       CallExpression(path) {
-        if (path.node.callee.name === 'require') {
-          const arg = path.get('arguments.0')
+        if ((path.node.callee as Types.Identifier).name === 'require') {
+          const arg: any = path.get('arguments.0')
           if (arg) {
             const res = arg.evaluate()
             if (res.confident && cssExtensionsRe.test(res.value)) {
