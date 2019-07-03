@@ -40,7 +40,7 @@
     "postcss-load-config": "^2.0.0",
     "resolve": "^1.8.1",
     "resolve-from": "^5.0.0",
-    "stringify-attributes": "^1.0.0",
+    "stringify-attributes": "^2.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
