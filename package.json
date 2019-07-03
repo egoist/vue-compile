@@ -33,7 +33,7 @@
     "fast-glob": "^3.0.3",
     "find-babel-config": "^1.1.0",
     "fs-extra": "^8.1.0",
-    "import-from": "^2.1.0",
+    "import-from": "^3.0.0",
     "is-binary-path": "^2.0.0",
     "joycon": "^2.1.2",
     "postcss": "^7.0.6",
