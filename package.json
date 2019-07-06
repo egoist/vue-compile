@@ -1,6 +1,6 @@
 {
   "name": "vue-compile",
-  "version": "0.6.1-canary.17.6ca7886",
+  "version": "0.0.0-semantic-release",
   "description": "Pre-compile each blocks of your Vue single-file components.",
   "repository": {
     "url": "egoist/vue-compile",
