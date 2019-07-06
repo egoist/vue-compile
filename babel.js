@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable
 module.exports = require('./dist/babel/preset')
