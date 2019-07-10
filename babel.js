@@ -1,2 +1,2 @@
-// eslint-disable
+/* eslint-disable */
 module.exports = require('./dist/babel/preset')
