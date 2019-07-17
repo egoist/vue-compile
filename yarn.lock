@@ -1014,10 +1014,12 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/stringify-attributes@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@types/stringify-attributes/-/stringify-attributes-1.0.0.tgz#5e537dd5871c0dd857a85dae9f5b1ab6128468e9"
-  integrity sha512-zgos0+GHiB5E0kEd+e4VKGQwkY5ZUAVsdRsk4KzaSGoXCv1P3FbpNYeXM/5/3h7O/0zQXbVbWzWa68M+oAKCGQ==
+"@types/stringify-attributes@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/stringify-attributes/-/stringify-attributes-2.0.0.tgz#1f65cb56116be371196f8f1029320da124de49d6"
+  integrity sha512-VN2DbNkth+gYuN6Na6PO17RnHUhzr+yPLEpa72Ut9j8sTym6XqoOJiYx1uWTgvHysEtlmu4D9f6CtvxTjls8KA==
+  dependencies:
+    stringify-attributes "*"
 
 "@types/yargs@^12.0.2", "@types/yargs@^12.0.9":
   version "12.0.12"
@@ -1034,14 +1036,6 @@
     functional-red-black-tree "^1.0.1"
     regexpp "^2.0.1"
     tsutils "^3.7.0"
-
-"@typescript-eslint/experimental-utils@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-1.11.0.tgz#594abe47091cbeabac1d6f9cfed06d0ad99eb7e3"
-  integrity sha512-7LbfaqF6B8oa8cp/315zxKk8FFzosRzzhF8Kn/ZRsRsnpm7Qcu25cR/9RnAQo5utZ2KIWVgaALr+ZmcbG47ruw==
-  dependencies:
-    "@typescript-eslint/typescript-estree" "1.11.0"
-    eslint-scope "^4.0.0"
 
 "@typescript-eslint/experimental-utils@1.12.0":
   version "1.12.0"
@@ -1060,14 +1054,6 @@
     "@typescript-eslint/experimental-utils" "1.12.0"
     "@typescript-eslint/typescript-estree" "1.12.0"
     eslint-visitor-keys "^1.0.0"
-
-"@typescript-eslint/typescript-estree@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-1.11.0.tgz#b7b5782aab22e4b3b6d84633652c9f41e62d37d5"
-  integrity sha512-fquUHF5tAx1sM2OeRCC7wVxFd1iMELWMGCzOSmJ3pLzArj9+kRixdlC4d5MncuzXpjEqc6045p3KwM0o/3FuUA==
-  dependencies:
-    lodash.unescape "4.0.1"
-    semver "5.5.0"
 
 "@typescript-eslint/typescript-estree@1.12.0":
   version "1.12.0"
@@ -6270,7 +6256,7 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-stringify-attributes@^2.0.0:
+stringify-attributes@*, stringify-attributes@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stringify-attributes/-/stringify-attributes-2.0.0.tgz#0355827de224ec8a94ca81a267f92a3f5f778820"
   integrity sha512-wrVfRV6sCCB6wr3gx8OgKsp/9dSWWbKr8ifLfOxEcd/BBoa8d5pAf4BZb/jQW1JZnoZImjvUdxdo3ikYHZmYiw==
