@@ -46,7 +46,7 @@
     "@types/debug": "^4.1.4",
     "@types/fs-extra": "^8.0.0",
     "@types/is-binary-path": "^2.1.0",
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^25.2.1",
     "@types/node-sass": "^4.11.0",
     "@types/stringify-attributes": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
