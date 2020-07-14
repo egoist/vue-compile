@@ -1653,9 +1653,9 @@ builtin-modules@^1.0.0:
   integrity sha1-Jw8HbFpywC9bZaR9+Uxf46J4iS8=
 
 cac@^6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/cac/-/cac-6.5.2.tgz#92ef1490b9ffde5f0be7eeadec5ea926f0e78ef6"
-  integrity sha512-8JdiD9/ZLsG418j/chyZQ3VWuhFELSGlH4EUxzNKgIH8wK8dO0j5Pqu6Pk7B/RP3kX9aasyQhPrrUjYO5e0w7w==
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/cac/-/cac-6.6.0.tgz#15c3c63132aaefcb2b4b72e4f6c7a2eeee84177e"
+  integrity sha512-F219zLS+TGmEw+AkKQZUCcC3GRJpckU3lsBIoyBoEUA82WapjT+SRmhh5YO1U4UzGXHxxaUctE3wAFAi0k36LQ==
 
 cache-base@^1.0.1:
   version "1.0.1"
