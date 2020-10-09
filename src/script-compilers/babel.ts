@@ -7,13 +7,16 @@ const debug = createDebug('vue-compile:script')
 
 const cache = new Map()
 
-export const compile = async (code: string, { filename, modern, babelrc }: ScriptCompilerContext): Promise<string> => {
+export const compile = async (
+  code: string,
+  { filename, modern, babelrc }: ScriptCompilerContext
+): Promise<string> => {
   const cwd = path.dirname(filename)
-  const file =
-    babelrc === false ?
-      null :
-      cache.get(cwd) ||
-        (require('find-babel-config')(cwd).then((res: any) => res.file))
+  const file: string | null =
+    babelrc === false
+      ? null
+      : cache.get(cwd) ||
+        require('find-babel-config')(cwd).then((res: any) => res.file)
 
   cache.set(cwd, file)
 

@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "xo-typescript",
+    "rem",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["prettier"],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "unicorn/filename-case": "off",
+    "unicorn/no-abusive-eslint-disable": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/restrict-template-expressions": "off"
+  }
+}

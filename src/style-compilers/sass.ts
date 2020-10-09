@@ -1,6 +1,5 @@
 import path from 'path'
 import { promisify } from 'util'
-// eslint-disable-next-line import/no-unresolved
 import { SassRenderCallback, Options as SassRenderOptions } from 'node-sass'
 import { importLocal } from '../importLocal'
 
@@ -11,13 +10,20 @@ const getUrlOfPartial = (url: string): string => {
   return `${parsedUrl.dir}${path.sep}_${parsedUrl.base}`
 }
 
-type SassRender = (options: SassRenderOptions, callback: SassRenderCallback) => void
+type SassRender = (
+  options: SassRenderOptions,
+  callback: SassRenderCallback
+) => void
 
 export const compile = async (
   code: string,
   { filename, indentedSyntax }: { filename: string; indentedSyntax?: boolean }
 ): Promise<string> => {
-  const sass: { render: SassRender }  = importLocal(path.dirname(filename), 'sass', 'node-sass')
+  const sass: { render: SassRender } = importLocal(
+    path.dirname(filename),
+    'sass',
+    'node-sass'
+  )
   const res = await promisify(sass.render.bind(sass))({
     file: filename,
     data: code,

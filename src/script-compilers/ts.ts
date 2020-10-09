@@ -16,6 +16,6 @@ export const compile = async (
       ]
     })
 
-    return (result && result.code) || ''
+    return (result?.code) ?? ''
   })
 }

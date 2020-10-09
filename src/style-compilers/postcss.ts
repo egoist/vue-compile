@@ -38,7 +38,7 @@ export const compile = async (
 
   const options = {
     from: filename,
-      map: false,
+    map: false,
     ...config.options
   }
 
