@@ -10,14 +10,12 @@ export const compileScript = async (
 
   const code = script.content.replace(/^\/\/$/gm, '')
 
-  if (script.lang === 'ts' || script.lang === 'typescript') {
-    script.content = await import('./script-compilers/ts').then(
-      async ({ compile }) => compile(code, ctx)
-    )
-  } else if (
+  if (
     !script.lang ||
     script.lang === 'esnext' ||
-    script.lang === 'babel'
+    script.lang === 'babel' ||
+    script.lang === 'ts' ||
+    script.lang === 'typescript'
   ) {
     script.content = await import('./script-compilers/babel').then(
       async ({ compile }) => compile(code, ctx)

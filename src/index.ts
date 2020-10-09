@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 import JoyCon from 'joycon'
 import isBinaryPath from 'is-binary-path'
 import createDebug from 'debug'
-import { replaceContants, cssExtensionsRe } from './utils'
+import { replaceContants, cssExtensionsRe, jsExtensionsRe } from './utils'
 
 const debug = createDebug('vue-compile:cli')
 
@@ -58,7 +58,7 @@ class VueCompile extends EventEmitter {
         debug(`Using config file: ${configPath}`)
       }
 
-      options = { ...options, ...config}
+      options = { ...options, ...config }
     }
 
     this.options = this.normalizeOptions(options)
@@ -66,8 +66,11 @@ class VueCompile extends EventEmitter {
   }
 
   normalizeOptions(options: InputOptions): NormalizedOptions {
-    return { ...options, input: path.resolve(options.input),
-      output: path.resolve(options.output)}
+    return {
+      ...options,
+      input: path.resolve(options.input),
+      output: path.resolve(options.output)
+    }
   }
 
   async normalize(): Promise<void> {
@@ -124,40 +127,39 @@ class VueCompile extends EventEmitter {
       }
     )
 
-    const script = await import('./compileScript').then(async ({ compileScript }) =>
-      compileScript(sfcDescriptor.script, ctx)
+    const script = await import('./compileScript').then(
+      async ({ compileScript }) => compileScript(sfcDescriptor.script, ctx)
     )
     const template = await import('./compileTemplate').then(
       async ({ compileTemplate }) => compileTemplate(sfcDescriptor.template)
     )
-    const styles = await import('./compileStyles').then(async ({ compileStyles }) =>
-      compileStyles(sfcDescriptor.styles, ctx)
+    const styles = await import('./compileStyles').then(
+      async ({ compileStyles }) => compileStyles(sfcDescriptor.styles, ctx)
     )
 
-    await import('./writeSFC').then(async ({writeSFC}) => writeSFC(
-      {
-        script,
-        styles,
-        template,
-        customBlocks: sfcDescriptor.customBlocks
-      },
-      outFile
-    ))
+    await import('./writeSFC').then(async ({ writeSFC }) =>
+      writeSFC(
+        {
+          script,
+          styles,
+          template,
+          customBlocks: sfcDescriptor.customBlocks
+        },
+        outFile
+      )
+    )
 
     this.emit('normalized', input, outFile)
   }
 
   async normalizeDir(input: string, outDir: string): Promise<void> {
-    const include = [...(this.options.include || [])]
-    const exclude = [...(this.options.exclude || [])]
+    const include = [...(this.options.include ?? [])]
+    const exclude = [...(this.options.exclude ?? [])]
     const { default: glob } = await import('fast-glob')
-    const files = await glob(
-      include.length > 0 ? include : ['**/*'],
-      {
-        cwd: input,
-        ignore: ['**/node_modules/**'].concat(exclude)
-      }
-    )
+    const files = await glob(include.length > 0 ? include : ['**/*'], {
+      cwd: input,
+      ignore: ['**/node_modules/**'].concat(exclude)
+    })
     await Promise.all(
       files.map(async (file: string) => {
         return this.normalizeFile(
@@ -184,27 +186,22 @@ class VueCompile extends EventEmitter {
   ): Promise<void> {
     let output
 
-    if (filename.endsWith('.js')) {
-      output = await import('./script-compilers/babel').then(async ({ compile }) => {
-        return compile(source, {
-          filename,
-          babelrc,
-          modern
-        })
-      })
-    } else if (filename.endsWith('.ts')) {
-      output = await import('./script-compilers/ts').then(async ({ compile }) => {
-        return compile(source, {
-          filename,
-          babelrc,
-          modern
-        })
-      })
-      outFile = outFile.replace(/\.ts$/, '.js')
+    if (jsExtensionsRe.test(filename)) {
+      output = await import('./script-compilers/babel').then(
+        async ({ compile }) => {
+          return compile(source, {
+            filename,
+            babelrc,
+            modern
+          })
+        }
+      )
     } else if (filename.endsWith('.css')) {
-      output = await import('./style-compilers/postcss').then(async ({ compile }) => {
-        return compile(source, { filename })
-      })
+      output = await import('./style-compilers/postcss').then(
+        async ({ compile }) => {
+          return compile(source, { filename })
+        }
+      )
     } else if (/\.s[ac]ss$/.test(filename)) {
       const basename = path.basename(filename)
       if (basename.startsWith('_')) {
@@ -212,23 +209,28 @@ class VueCompile extends EventEmitter {
         return
       }
 
-      output = await import('./style-compilers/sass').then(async ({ compile }) => {
-        return compile(source, {
-          filename,
-          indentedSyntax: filename.endsWith(".sass")
-        })
-      })
+      output = await import('./style-compilers/sass').then(
+        async ({ compile }) => {
+          return compile(source, {
+            filename,
+            indentedSyntax: filename.endsWith('.sass')
+          })
+        }
+      )
     } else if (/\.styl(us)?/.test(filename)) {
-      output = await import('./style-compilers/stylus').then(async ({ compile }) => {
-        return compile(source, {
-          filename
-        })
-      })
+      output = await import('./style-compilers/stylus').then(
+        async ({ compile }) => {
+          return compile(source, {
+            filename
+          })
+        }
+      )
     } else {
       output = source
     }
 
     outFile = outFile.replace(cssExtensionsRe, '.css')
+    outFile = outFile.replace(jsExtensionsRe, '.js')
 
     await fs.outputFile(outFile, output, 'utf8')
 
@@ -245,4 +247,5 @@ class VueCompile extends EventEmitter {
   }
 }
 
-export const createCompiler = (opts: InputOptions): VueCompile => new VueCompile(opts)
+export const createCompiler = (opts: InputOptions): VueCompile =>
+  new VueCompile(opts)

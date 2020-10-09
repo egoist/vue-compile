@@ -2,27 +2,22 @@ import path from 'path'
 import createDebug from 'debug'
 import { TransformOptions } from '@babel/core'
 import { ScriptCompilerContext } from '../types'
+import { getBabelConfigFile } from '../utils'
 
 const debug = createDebug('vue-compile:script')
-
-const cache = new Map()
 
 export const compile = async (
   code: string,
   { filename, modern, babelrc }: ScriptCompilerContext
 ): Promise<string> => {
   const cwd = path.dirname(filename)
-  const file: string | null =
-    babelrc === false
-      ? null
-      : cache.get(cwd) ||
-        require('find-babel-config')(cwd).then((res: any) => res.file)
 
-  cache.set(cwd, file)
+  const babelConfigFile = getBabelConfigFile(cwd, babelrc)
 
   const config: TransformOptions = {
     filename,
     presets: [
+      require.resolve('@babel/preset-typescript'),
       [
         require.resolve('../babel/preset'),
         {
@@ -32,9 +27,9 @@ export const compile = async (
     ]
   }
 
-  if (file) {
+  if (babelConfigFile) {
     config.babelrc = true
-    debug(`Using Babel config file at ${file}`)
+    debug(`Using Babel config file at ${babelConfigFile}`)
   } else {
     config.babelrc = false
   }
