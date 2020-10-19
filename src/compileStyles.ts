@@ -14,15 +14,15 @@ export const compileStyles = async (
       const { content } = style
 
       if (style.lang === 'stylus') {
-        style.content = await require('./style-compilers/stylus')(content, {
+        style.content = await require('./style-compilers/stylus').compile(content, {
           filename
         })
       } else if (!style.lang || style.lang === 'postcss') {
-        style.content = await require('./style-compilers/postcss')(content, {
+        style.content = await require('./style-compilers/postcss').compile(content, {
           filename
         })
       } else if (style.lang === 'scss' || style.lang === 'sass') {
-        style.content = await require('./style-compilers/sass')(content, {
+        style.content = await require('./style-compilers/sass').compile(content, {
           filename,
           indentedSyntax: style.lang === 'sass'
         })
