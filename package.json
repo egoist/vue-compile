@@ -36,7 +36,7 @@
     "is-binary-path": "^2.0.0",
     "joycon": "^2.1.2",
     "postcss": "^7.0.6",
-    "postcss-load-config": "^2.0.0",
+    "postcss-load-config": "^3.0.1",
     "resolve": "^1.8.1",
     "resolve-from": "^5.0.0",
     "stringify-attributes": "^2.0.0",
