@@ -15,21 +15,21 @@ test('script block', async () => {
   await compiler.normalize()
   const content = await fs.readFile(path.join(outDir, 'foo.vue'), 'utf8')
   expect(content).toMatchInlineSnapshot(`
-                                                "<script>
-                                                import { ref } from 'vue';
-                                                export default {
-                                                  setup() {
-                                                    var _a$value;
+    "<script>
+    import { ref } from 'vue';
+    export default {
+      setup() {
+        var _a$value;
 
-                                                    var a = ref('a');
-                                                    return {
-                                                      a: (_a$value = a.value) !== null && _a$value !== void 0 ? _a$value : 'a'
-                                                    };
-                                                  }
+        const a = ref('a');
+        return {
+          a: (_a$value = a.value) !== null && _a$value !== void 0 ? _a$value : 'a'
+        };
+      }
 
-                                                };
-                                                </script>"
-                        `)
+    };
+    </script>"
+  `)
 })
 
 test('script setup', async () => {
@@ -41,21 +41,21 @@ test('script setup', async () => {
   await compiler.normalize()
   const content = await fs.readFile(path.join(outDir, 'foo.vue'), 'utf8')
   expect(content).toMatchInlineSnapshot(`
-            "<template>  
-                <div>{{ props.foo }}</div>
-            </template>
+    "<template>  
+        <div>{{ props.foo }}</div>
+    </template>
 
-            <script>
-            export var foo = 'foo';
-            </script>
+    <script>
+    export const foo = 'foo';
+    </script>
 
-            <script setup>
-            import { defineProps } from 'vue';
-            var props = defineProps({
-              foo: Number
-            });
-            </script>"
-      `)
+    <script setup>
+    import { defineProps } from 'vue';
+    const props = defineProps({
+      foo: Number
+    });
+    </script>"
+  `)
 })
 
 test('custom blocks', async () => {
@@ -67,16 +67,16 @@ test('custom blocks', async () => {
   await compiler.normalize()
   const content = await fs.readFile(path.join(outDir, 'foo.vue'), 'utf8')
   expect(content).toMatchInlineSnapshot(`
-                                "<template>  
-                                    <div></div>
-                                </template>
+                                        "<template>  
+                                            <div></div>
+                                        </template>
 
-                                <script>
-                                export default {};
-                                </script>
+                                        <script>
+                                        export default {};
+                                        </script>
 
-                                <foo>this is a custom block</foo>"
-                `)
+                                        <foo>this is a custom block</foo>"
+                    `)
 })
 
 test('keep ts block', async () => {
@@ -92,7 +92,7 @@ test('keep ts block', async () => {
     "<script lang=\\"ts\\">
     export default {
       setup() {
-        var a: string = '1';
+        let a: string = '1';
         return {
           a
         };
@@ -101,4 +101,25 @@ test('keep ts block', async () => {
     };
     </script>"
   `)
+})
+
+test('keep-async-function', async () => {
+  const outDir = tmp('keep-async-function')
+  const compiler = createCompiler({
+    input: fixture('keep-async-function'),
+    output: outDir,
+    preserveTsBlock: true,
+  })
+  await compiler.normalize()
+  const content = await fs.readFile(path.join(outDir, 'foo.vue'), 'utf8')
+  expect(content).toMatchInlineSnapshot(`
+        "<script lang=\\"ts\\">
+        export default {
+          async setup() {
+            console.log('a');
+          }
+
+        };
+        </script>"
+    `)
 })

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import path from 'path'
 import chalk from 'chalk'
 
 if (parseInt(process.versions.node, 10) < 8) {
@@ -40,7 +41,8 @@ async function main(): Promise<void> {
       const { createCompiler } = await import('.')
 
       if (!options.input) {
-        cli.outputHelp(); return;
+        cli.outputHelp()
+        return
       }
 
       const compiler = createCompiler(options)
@@ -57,7 +59,22 @@ async function main(): Promise<void> {
         }
       })
 
-      return compiler.normalize().catch(handleError)
+      await compiler.normalize().catch(handleError)
+
+      if (flags.watch) {
+        const { watch } = await import('chokidar')
+        watch('.', {
+          cwd: compiler.isInputFile
+            ? path.resolve(path.dirname(input))
+            : path.resolve(input),
+          ignoreInitial: true,
+          ignorePermissionErrors: true,
+          ignored: '**/{node_modules,dist,.git,public}/**',
+        }).on('all', (_, file) => {
+          console.log(chalk.bold(`Rebuilding because ${file} changed..`))
+          compiler.normalize().catch(handleError)
+        })
+      }
     })
     .option('-o, --output <file|directory>', 'Output path')
     .option(
@@ -70,6 +87,7 @@ async function main(): Promise<void> {
     )
     .option('--no-babelrc', 'Disable .babelrc file')
     .option('--preserve-ts-block', `Preserve TypeScript types in script block`)
+    .option('-w, --watch', 'Enable watch mode')
 
   cli.option('--debug', 'Show debug logs')
 

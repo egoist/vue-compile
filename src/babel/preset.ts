@@ -14,7 +14,6 @@ export default (_: any, opts: { transformTypeScript: boolean }) => {
         edge: '79',
         // Node 12 is no longer maintained, and let's pretend Node 13 didn't exist
         node: '14',
-        esmodules: true,
       },
     },
   ])
