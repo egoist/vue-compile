@@ -1,10 +1,5 @@
 {
-  "extends": [
-    "xo-typescript",
-    "rem",
-    "prettier",
-    "prettier/@typescript-eslint"
-  ],
+  "extends": ["xo-typescript", "rem", "prettier"],
   "plugins": ["prettier"],
   "env": {
     "jest": true

@@ -1,4 +1,5 @@
 import path from 'path'
+import { loadPartialConfig } from '@babel/core'
 
 export const humanlizePath = (p: string): string =>
   path.relative(process.cwd(), p)
@@ -13,15 +14,13 @@ function escapeRe(str: string): string {
 
 export const replaceContants = (
   content: string,
-  constants?: { [k: string]: any }
+  constants?: Record<string, any>,
 ): string => {
   if (!constants) return content
 
   const RE = new RegExp(
-    `\\b(${Object.keys(constants)
-      .map(escapeRe)
-      .join('|')})\\b`,
-    'g'
+    `\\b(${Object.keys(constants).map(escapeRe).join('|')})\\b`,
+    'g',
   )
   content = content.replace(RE, (_, p1) => {
     return constants[p1]
@@ -34,7 +33,7 @@ export const cssExtensionsRe = /\.(css|s[ac]ss|styl(us)?)$/
 
 export const jsExtensionsRe = /\.[jt]sx?$/
 
-const babelConfigCache: Map<string, string | null> = new Map()
+const babelConfigCache: Map<string, string | undefined> = new Map()
 
 /**
  * Find babel config file in cwd
@@ -42,13 +41,16 @@ const babelConfigCache: Map<string, string | null> = new Map()
  * @param babelrc Whether to load babel config file
  */
 export const getBabelConfigFile = (cwd: string, babelrc?: boolean) => {
-  const file: string | null =
+  const file: string | undefined =
     babelrc === false
-      ? null
-      : babelConfigCache.get(cwd) ??
-        require('find-babel-config')(cwd).then((res: any) => res.file)
+      ? undefined
+      : babelConfigCache.get(cwd) ?? loadPartialConfig()?.babelrc
 
   babelConfigCache.set(cwd, file)
 
   return file
+}
+
+export function isDefined<T>(value: T | undefined | null): value is T {
+  return value != null
 }

@@ -12,17 +12,17 @@ const getUrlOfPartial = (url: string): string => {
 
 type SassRender = (
   options: SassRenderOptions,
-  callback: SassRenderCallback
+  callback: SassRenderCallback,
 ) => void
 
 export const compile = async (
   code: string,
-  { filename, indentedSyntax }: { filename: string; indentedSyntax?: boolean }
+  { filename, indentedSyntax }: { filename: string; indentedSyntax?: boolean },
 ): Promise<string> => {
   const sass: { render: SassRender } = importLocal(
     path.dirname(filename),
     'sass',
-    'node-sass'
+    'node-sass',
   )
   const res = await promisify(sass.render.bind(sass))({
     file: filename,
@@ -31,19 +31,22 @@ export const compile = async (
     sourceMap: false,
     importer: [
       (url, importer, done) => {
-        if (!moduleRe.test(url)) return done({ file: url })
+        if (!moduleRe.test(url)) {
+          done({ file: url })
+          return
+        }
 
         const moduleUrl = url.slice(1)
         const partialUrl = getUrlOfPartial(moduleUrl)
 
         const options = {
           basedir: path.dirname(importer),
-          extensions: ['.scss', '.sass', '.css']
+          extensions: ['.scss', '.sass', '.css'],
         }
         const finishImport = (id: string): void => {
           done({
             // Do not add `.css` extension in order to inline the file
-            file: id.endsWith('.css') ? id.replace(/\.css$/, '') : id
+            file: id.endsWith('.css') ? id.replace(/\.css$/, '') : id,
           })
         }
 
@@ -59,15 +62,13 @@ export const compile = async (
           .then(finishImport)
           .catch((error: any) => {
             if (error.code === 'MODULE_NOT_FOUND' || error.code === 'ENOENT') {
-              resolvePromise(moduleUrl, options)
-                .then(finishImport)
-                .catch(next)
+              resolvePromise(moduleUrl, options).then(finishImport).catch(next)
             } else {
               next()
             }
           })
-      }
-    ]
+      },
+    ],
   })
 
   return res.css.toString()

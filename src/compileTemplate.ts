@@ -1,3 +1,4 @@
-import { SFCBlock } from '@vue/component-compiler-utils'
+import { SFCTemplateBlock } from '@vue/compiler-sfc'
 
-export const compileTemplate = <T = SFCBlock | null>(template: T): T => template
+export const compileTemplate = <T = SFCTemplateBlock | null>(template: T): T =>
+  template

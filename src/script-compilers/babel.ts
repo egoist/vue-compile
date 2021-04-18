@@ -1,6 +1,7 @@
 import path from 'path'
 import createDebug from 'debug'
 import { TransformOptions } from '@babel/core'
+import preset from '../babel/preset'
 import { ScriptCompilerContext } from '../types'
 import { getBabelConfigFile } from '../utils'
 
@@ -8,7 +9,7 @@ const debug = createDebug('vue-compile:script')
 
 export const compile = async (
   code: string,
-  { filename, modern, babelrc }: ScriptCompilerContext
+  { filename, babelrc, transformTypeScript }: ScriptCompilerContext,
 ): Promise<string> => {
   const cwd = path.dirname(filename)
 
@@ -16,15 +17,7 @@ export const compile = async (
 
   const config: TransformOptions = {
     filename,
-    presets: [
-      require.resolve('@babel/preset-typescript'),
-      [
-        require.resolve('../babel/preset'),
-        {
-          modern
-        }
-      ]
-    ]
+    presets: [[preset, { transformTypeScript }]],
   }
 
   if (babelConfigFile) {

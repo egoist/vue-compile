@@ -3,7 +3,7 @@ import chalk from 'chalk'
 
 if (parseInt(process.versions.node, 10) < 8) {
   console.error(
-    chalk.red('The "vue-compile" module requires Node.js 8 or above!')
+    chalk.red('The "vue-compile" module requires Node.js 8 or above!'),
   )
   console.error(chalk.dim(`Current version: ${process.versions.node}`))
   process.exit(1)
@@ -18,13 +18,13 @@ async function main(): Promise<void> {
 
   cli
     .command('[input]', 'Normalize input file or directory', {
-      ignoreOptionDefaultValue: true
+      ignoreOptionDefaultValue: true,
     })
     .usage('[input] [options]')
     .action(async (input: string, flags: any) => {
       const options = {
         input,
-        ...flags
+        ...flags,
       }
 
       if (!options.input) {
@@ -37,22 +37,22 @@ async function main(): Promise<void> {
         process.env.DEBUG = `vue-compile:${options.debug}`
       }
 
-      const { createCompiler } = await import(".")
+      const { createCompiler } = await import('.')
 
       if (!options.input) {
-        return cli.outputHelp()
+        cli.outputHelp(); return;
       }
 
       const compiler = createCompiler(options)
 
       compiler.on('normalized', async (input: string, output: string) => {
         if (!compiler.options.debug) {
-           const { humanlizePath } = await import('./utils')
+          const { humanlizePath } = await import('./utils')
 
           console.log(
             `${chalk.magenta(humanlizePath(input))} ${chalk.dim(
-              '->'
-            )} ${chalk.green(humanlizePath(output))}`
+              '->',
+            )} ${chalk.green(humanlizePath(output))}`,
           )
         }
       })
@@ -62,17 +62,14 @@ async function main(): Promise<void> {
     .option('-o, --output <file|directory>', 'Output path')
     .option(
       '-i, --include <glob>',
-      'A glob pattern to include from input directory'
+      'A glob pattern to include from input directory',
     )
     .option(
       '-e, --exclude <glob>',
-      'A glob pattern to exclude from input directory'
+      'A glob pattern to exclude from input directory',
     )
     .option('--no-babelrc', 'Disable .babelrc file')
-    .option(
-      '--modern',
-      'Only supports browsers that support <script type="module">'
-    )
+    .option('--preserve-ts-block', `Preserve TypeScript types in script block`)
 
   cli.option('--debug', 'Show debug logs')
 
