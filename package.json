@@ -46,7 +46,7 @@
     "@egoist/prettier-config": "^0.1.0",
     "@sucrase/jest-plugin": "^2.1.0",
     "@types/debug": "^4.1.4",
-    "@types/fs-extra": "^8.0.0",
+    "@types/fs-extra": "^9.0.11",
     "@types/is-binary-path": "^2.1.0",
     "@types/jest": "^26.0.14",
     "@types/node-sass": "^4.11.0",
