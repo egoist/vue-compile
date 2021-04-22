@@ -2502,10 +2502,10 @@ escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-goat@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/escape-goat/-/escape-goat-2.1.0.tgz#0f55d3fa1d41a4175fc7a26e25bdb5b2d1afbe31"
-  integrity sha512-7fMXQmS/6yjYQT/yydWKCAm5ucuU7QtqP6/CE7BIKk6z3xTP4MLqkdUBwaViQVuTAde8yZgZIjSnEAPRl6u53g==
+escape-goat@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/escape-goat/-/escape-goat-3.0.0.tgz#e8b5fb658553fe8a3c4959c316c6ebb8c842b19c"
+  integrity sha512-w3PwNZJwRxlp47QGzhuEBldEqVHHhh8/tIPcl6ecf2Bou99cdAt0knihBV0Ecc7CGxYduXVBDheH1K2oADRlvw==
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -6025,12 +6025,12 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-stringify-attributes@*, stringify-attributes@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/stringify-attributes/-/stringify-attributes-2.0.0.tgz#0355827de224ec8a94ca81a267f92a3f5f778820"
-  integrity sha512-wrVfRV6sCCB6wr3gx8OgKsp/9dSWWbKr8ifLfOxEcd/BBoa8d5pAf4BZb/jQW1JZnoZImjvUdxdo3ikYHZmYiw==
+stringify-attributes@*, stringify-attributes@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stringify-attributes/-/stringify-attributes-3.0.0.tgz#10d8c3615924df47b70d28c848d71c8afb0a8e52"
+  integrity sha512-tJKiThlLfog6ljT7ZTihlMh0iAtjKlu/ss9DMmBE5oOosbMqOMcuxc7zDfxP2lGzSb2Bwvbd3gQTqTSCmXyySw==
   dependencies:
-    escape-goat "^2.0.0"
+    escape-goat "^3.0.0"
 
 stringify-object@^3.3.0:
   version "3.3.0"
