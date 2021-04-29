@@ -1,0 +1,48 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "21:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/jest"
+    versions:
+    - 26.0.22
+  - dependency-name: eslint-config-xo-typescript
+    versions:
+    - 0.39.0
+  - dependency-name: eslint
+    versions:
+    - 7.18.0
+    - 7.19.0
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: "@babel/preset-typescript"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.12.7
+    - 7.13.0
+  - dependency-name: cac
+    versions:
+    - 6.7.1
+    - 6.7.2
+  - dependency-name: postcss-load-config
+    versions:
+    - 3.0.0
+    - 3.0.1
+  - dependency-name: fast-glob
+    versions:
+    - 3.2.5
+  - dependency-name: prettier
+    versions:
+    - 2.2.1
+  - dependency-name: vue-template-compiler
+    versions:
+    - 2.6.12
