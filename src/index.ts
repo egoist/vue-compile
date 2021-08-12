@@ -6,6 +6,7 @@ import isBinaryPath from 'is-binary-path'
 import createDebug from 'debug'
 import { parse } from '@vue/compiler-sfc'
 import glob from 'fast-glob'
+import cloneDeep from 'lodash.clonedeep'
 import {
   replaceContants,
   cssExtensionsRe,
@@ -19,7 +20,7 @@ import { writeSFC } from './writeSFC'
 
 const debug = createDebug('vue-compile:cli')
 
-type OptionContants = Record<string, string | boolean | number>;
+type OptionContants = Record<string, string | boolean | number>
 
 interface InputOptions {
   config?: boolean | string
@@ -127,9 +128,11 @@ class VueCompile extends EventEmitter {
 
     ctx.transformTypeScript = !this.options.preserveTsBlock
 
-    const sfc = parse(source, {
-      filename: input,
-    })
+    const sfc = cloneDeep(
+      parse(source, {
+        filename: input,
+      }),
+    )
 
     const script = await compileScript(sfc.descriptor.script, ctx)
     const scriptSetup = await compileScript(sfc.descriptor.scriptSetup, ctx)
@@ -159,6 +162,7 @@ class VueCompile extends EventEmitter {
       cwd: input,
       ignore: ['**/node_modules/**'].concat(exclude),
     })
+
     await Promise.all(
       files.map(async (file: string) => {
         return this.normalizeFile(
