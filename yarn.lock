@@ -2548,10 +2548,10 @@ eslint-config-rem@^4.0.0:
   dependencies:
     eslint-plugin-markdown "^1.0.0-beta.6"
 
-eslint-config-xo-typescript@^0.38.0:
-  version "0.38.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.38.0.tgz#2aef017ce9a4b68855b246771557a7eab545b589"
-  integrity sha512-f5z0gN1r9X84PK1qav6T6YT1zW6KcAqtsMPtmqoKBLt4ACRr6tbAddtFwqkluAEH9JvHjWxuB8vu4KJFcjuzdQ==
+eslint-config-xo-typescript@^0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.40.0.tgz#394cd441e0cf80d8d00c4d2b7a38a68330576933"
+  integrity sha512-xo4GaWHWgxkzGTfN+KsW8ptzMq0iYV+pr4LbRUQKcSPwvAbzHmW4/RimX2x3eOoNitMJCbpzO02M8SBWQ8C35w==
 
 eslint-plugin-markdown@^1.0.0-beta.6:
   version "1.0.0-beta.6"
