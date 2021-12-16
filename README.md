@@ -36,7 +36,7 @@ Supported transforms (via `lang` attribute):
   - `html` (default)
 - `<script>` tag: 
   - `babel` (default): use our default [babel preset](./lib/babel/preset.js) or your own `.babelrc`
-  - `ts` `typescript`: use our default [babel preset](./lib/babel/preset.js) + `@babel/preset-typescript`
+  - `ts` `typescript`: use our default [babel preset](./lib/babel/preset.js) + `@babel/preset-typescript`, you can use `--preserve-ts-block` flag to preserve types, i.e. disable typescript transformation
 - `<style>` tag: 
   - `postcss` (default): use your own `postcss.config.js`
   - `stylus` `sass` `scss`
