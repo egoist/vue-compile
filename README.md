@@ -5,7 +5,7 @@ Compile the blocks in Vue single-file components to JS/CSS from Babel/Sass/Stylu
 
 ## Why This Approach
 
-We want to publish `.vue` files instead of transformed `.js` files on npm because the `.vue` file is preferred in some scenarioes, e.g. `vue-server-renderer` can inline critical CSS from `<style>` blocks.
+You may want to publish `.vue` files instead of transformed `.js` files on npm because the `.vue` file is preferred in some scenarioes, e.g. `vue-server-renderer` can inline critical CSS from `<style>` blocks.
 
 This tool will transform each block in the `.vue` file to their standard conterparts like `sass` -> `css` so your users don't have to install additional libraries to compile it. 
 
