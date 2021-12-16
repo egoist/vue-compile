@@ -16,7 +16,7 @@ export const compile = async (
   const babelConfigFile = getBabelConfigFile(cwd, babelrc)
 
   const config: TransformOptions = {
-    filename,
+    filename: filename.endsWith('.vue') ? `${filename}.vue.ts` : filename,
     presets: [[preset, { transformTypeScript }]],
   }
 

@@ -3,10 +3,10 @@ export const foo = 'foo'
 </script>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
+import { defineProps, PropType } from 'vue'
 
 const props = defineProps({
-  foo: Number,
+  foo: Number as PropType<number>,
 })
 </script>
 
