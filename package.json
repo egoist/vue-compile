@@ -33,7 +33,7 @@
     "chokidar": "^3.5.1",
     "debug": "^4.3.1",
     "fast-glob": "^3.2.5",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^10.0.0",
     "is-binary-path": "^2.1.0",
     "joycon": "^3.0.1",
     "lodash.clonedeep": "^4.5.0",
